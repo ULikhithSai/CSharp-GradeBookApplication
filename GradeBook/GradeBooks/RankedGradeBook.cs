@@ -36,7 +36,7 @@ namespace GradeBook.GradeBooks
             
         }
 
-        public override void CalculateStatistics()
+        public new void CalculateStatistics()
         {
             if (Students.Count < 5)
             {
