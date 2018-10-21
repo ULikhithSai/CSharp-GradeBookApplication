@@ -54,7 +54,7 @@ namespace GradeBook.GradeBooks
             student.AddGrade(score);
         }
 
-        internal void CalculateStatistics()
+        public virtual void CalculateStatistics()
         {
             throw new NotImplementedException();
         }
