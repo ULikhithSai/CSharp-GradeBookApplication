@@ -137,7 +137,7 @@ namespace GradeBook.UserInterfaces
         
         public static void StatisticsCommand()
         {
-            GradeBook.CalculateStudentStatistics();
+            GradeBook.CalculateStatistics();
         }
 
         public static void StudentStatisticsCommand(string command)

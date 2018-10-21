@@ -54,11 +54,6 @@ namespace GradeBook.GradeBooks
             student.AddGrade(score);
         }
 
-        internal void CalculateStatistics()
-        {
-            throw new NotImplementedException();
-        }
-
         public void RemoveGrade(string name, double score)
         {
             if (string.IsNullOrEmpty(name))
@@ -128,7 +123,7 @@ namespace GradeBook.GradeBooks
             return 0;
         }
 
-        public virtual void CalculateStudentStatistics()
+        public virtual void CalculateStatistics()
         {
             var allStudentsPoints = 0d;
             var campusPoints = 0d;
@@ -141,7 +136,7 @@ namespace GradeBook.GradeBooks
 
             foreach (var student in Students)
             {
-                student.LetterGrade = CalculateStatistics(student.AverageGrade);
+                student.LetterGrade = GetLetterGrade(student.AverageGrade);
                 student.GPA = GetGPA(student.LetterGrade, student.Type);
 
                 Console.WriteLine("{0} ({1}:{2}) GPA: {3}.", student.Name, student.LetterGrade, student.AverageGrade, student.GPA);
@@ -198,7 +193,7 @@ namespace GradeBook.GradeBooks
         public virtual void CalculateStudentStatistics(string name)
         {
             var student = Students.FirstOrDefault(e => e.Name == name);
-            student.LetterGrade = CalculateStatistics(student.AverageGrade);
+            student.LetterGrade = GetLetterGrade(student.AverageGrade);
             student.GPA = GetGPA(student.LetterGrade, student.Type);
 
             Console.WriteLine("{0} ({1}:{2}) GPA: {3}.", student.Name, student.LetterGrade, student.AverageGrade, student.GPA);
@@ -210,7 +205,7 @@ namespace GradeBook.GradeBooks
             }
         }
 
-        public virtual char CalculateStatistics(double averageGrade)
+        public virtual char GetLetterGrade(double averageGrade)
         {
             if (averageGrade >= 90)
                 return 'A';
